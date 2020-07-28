@@ -1,26 +1,19 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+
+import Board from './components/Board/Board';
+
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    return(
+        <div className="container">
+            <div id="board" className="row">
+                <div className="col-md-4 col-lg-4 offset-md-4 offset-lg-4 ">
+                <Board />
+                </div>
+            </div>    
+        </div>
+    );
 }
 
 export default App;
