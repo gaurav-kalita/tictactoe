@@ -1,9 +1,9 @@
 import React from 'react';
+import './Cross.css';
 
-
-const Cross = ({}) =>{
+const Cross = () =>{
     return(
-        <div>
+        <div className='cross'>
           X
         </div>
      

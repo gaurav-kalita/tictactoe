@@ -1,9 +1,9 @@
 import React from 'react';
+import './Zeroes.css'
 
-
-const Zeroes = ({}) =>{
+const Zeroes = () =>{
     return(
-        <div>
+        <div className='zero'>
           O
         </div>
      

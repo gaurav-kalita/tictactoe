@@ -1,23 +1,29 @@
 import React from 'react';
+import { connect } from 'react-redux';
+
 import Squares from './Squares/Squares'
 
-const board = [1,2,3,4,5,6,7,8,9]
 
 
-const key=()=>{
-    for (let index = 0; index < 10; index++) {
-        i;
-}
-}
+
+const Board = (props) =>{
+
+const board = props.board;
 
 
-const Board = ({}) =>{
     return(
         <div className="row">
-          { board.map(()=> <Square key={key}/> ) }
+          { board.map((value, index)=> <Squares key={index} index={index} symbol={value}/> ) }
         </div>
      
     )
 }
 
-export default Board;
+const mapStateToProps = state =>{
+    return {
+        board: state.board
+    }
+}
+
+
+export default connect(mapStateToProps, ) (Board);
