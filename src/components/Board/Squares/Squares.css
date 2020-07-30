@@ -4,3 +4,11 @@
     width: 10px;
     cursor: pointer;
 }
+
+#squares:hover{
+    background: grey;
+}
+
+.disabled{
+    cursor: not-allowed;
+}

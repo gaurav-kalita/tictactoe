@@ -1,6 +1,9 @@
 import {combineReducers} from 'redux'
-import {boardReducer} from './BoardReducers'
 
-export default  combineReducers(
-    {board: boardReducer
+import {boardReducer} from './BoardReducers'
+import {playerReducer} from './PlayerReducers'
+
+export default  combineReducers({
+    board: boardReducer,
+    players: playerReducer
     })

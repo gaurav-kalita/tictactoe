@@ -2,24 +2,43 @@ import React from 'react';
 import {connect} from 'react-redux';
 import './Squares.css';
 
-import { drawXAction, drawOAction } from '../../../actions/BoardActions';
+import { drawXAction, drawOAction, } from '../../../actions/BoardActions';
+import { toogleTurnAction,} from '../../../actions/PlayerActions'
 import Cross from '../Cross/Cross';
 import Zeroes from '../Zeroes/Zeroes';
 
-const Squares = ({symbol, index, draw}) =>{
+const Squares = ({symbol, index, draw, players, board}) =>{
+
+    const disabled = symbol ? 'disabled' : '';
     return(
 
-        <div id="squares" className="col-md-4" onClick={() => draw(index)}>
+        <div id="squares" className="col-md-4" onClick={() => draw(players,index, board)}>
+            <div className={"" +disabled}>
             {symbol ? (symbol === 'X' ? <Cross/> : <Zeroes/>) : ''}
+            </div>
         </div>
     
     )
 }
 
-const mapDispatchToProps = dispatch =>{
+const mapDispatchToProps = dispatch =>({
+    draw: (players, cellIndex, board)=>{
+        if (!board[cellIndex]) {
+            if (players[players.turn] === 'X'){
+                dispatch(drawXAction(cellIndex))
+            }else{
+                dispatch(drawOAction(cellIndex))
+            }
+            dispatch(toogleTurnAction()) 
+        }  
+    }
+})
+
+const mapStateToProps = state =>{
     return{
-        draw: (cellIndex) => dispatch(drawOAction(cellIndex)) 
+        players: state.players,
+        board: state.board
     }
 }
 
-export default connect(null, mapDispatchToProps) (Squares);
+export default connect(mapStateToProps, mapDispatchToProps) (Squares);

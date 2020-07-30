@@ -1,0 +1,25 @@
+.Player1{
+    border: 1px solid lightblue;
+    padding: 20px;
+    font-size: 30px;
+}
+
+.start{
+    border-radius: 100px;
+    border: 1px solid blanchedalmond;
+    width: 200px;
+    height: 50px;
+    line-height: 50px;
+    margin-left: 80px;
+    margin-top: 10px;
+}
+
+.Player2{
+    border: 1px solid lightblue;
+    padding: 20px;
+    font-size: 30px;
+}
+
+.active{
+    background: green;
+}
