@@ -15,8 +15,8 @@ export function playerReducer(state=initialState, action){
                 newXState.p1 = 'X'
                 newXState.p2 = 'O'
             } else{
-                newXState.p1 = 'X'
-                newXState.p2 = 'O'
+                newXState.p1 = 'O'
+                newXState.p2 = 'X'
             }
             return newXState
         
@@ -26,8 +26,8 @@ export function playerReducer(state=initialState, action){
                 newOState.p1 = 'O'
                 newOState.p2 = 'X'
             } else{
-                newOState.p1 = 'O'
-                newOState.p2 = 'X'
+                newOState.p1 = 'X'
+                newOState.p2 = 'O'
             }
             return newOState    
     

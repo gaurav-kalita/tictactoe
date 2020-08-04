@@ -12,6 +12,8 @@
     line-height: 50px;
     margin-left: 80px;
     margin-top: 10px;
+    text-decoration: none !important;
+    pointer-events: pointer;
 }
 
 .Player2{

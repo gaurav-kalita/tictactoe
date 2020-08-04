@@ -1,15 +1,17 @@
 import React from 'react';
-import {connect} from 'react-redux';
+import {connect,} from 'react-redux';
 import './Squares.css';
 
 import { drawXAction, drawOAction, } from '../../../actions/BoardActions';
 import { toogleTurnAction,} from '../../../actions/PlayerActions'
+import {checkResult} from '../../../actions/ResultsAction'
 import Cross from '../Cross/Cross';
 import Zeroes from '../Zeroes/Zeroes';
 
 const Squares = ({symbol, index, draw, players, board}) =>{
 
     const disabled = symbol ? 'disabled' : '';
+
     return(
 
         <div id="squares" className="col-md-4" onClick={() => draw(players,index, board)}>
@@ -26,12 +28,13 @@ const mapDispatchToProps = dispatch =>({
         if (!board[cellIndex]) {
             if (players[players.turn] === 'X'){
                 dispatch(drawXAction(cellIndex))
+                
             }else{
                 dispatch(drawOAction(cellIndex))
-            }
-            dispatch(toogleTurnAction()) 
-        }  
-    }
+            }  
+        }  dispatch(toogleTurnAction()) 
+           dispatch(checkResult(board))
+    },    
 })
 
 const mapStateToProps = state =>{
