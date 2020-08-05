@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import {connect,} from 'react-redux';
 import './Squares.css';
 
@@ -8,9 +8,14 @@ import {checkResult} from '../../../actions/ResultsAction'
 import Cross from '../Cross/Cross';
 import Zeroes from '../Zeroes/Zeroes';
 
-const Squares = ({symbol, index, draw, players, board}) =>{
+const Squares = ({symbol, index, draw, players, board, resultDispatch}) =>{
 
     const disabled = symbol ? 'disabled' : '';
+
+
+    useEffect(()=>{
+       resultDispatch(board)
+    })
 
     return(
 
@@ -33,8 +38,10 @@ const mapDispatchToProps = dispatch =>({
                 dispatch(drawOAction(cellIndex))
             }  
         }  dispatch(toogleTurnAction()) 
-           dispatch(checkResult(board))
-    },    
+    },
+    resultDispatch:(board)=>{
+        dispatch(checkResult(board))
+    }    
 })
 
 const mapStateToProps = state =>{
