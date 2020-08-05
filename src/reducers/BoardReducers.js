@@ -15,6 +15,9 @@ export const boardReducer = (state = initialState, action) =>{
             const newOState = [...state]
             newOState[action.cellIndex] = 'O'
             return newOState
+           
+        case 'RESET':
+            return initialState
 
         default:
             return state    

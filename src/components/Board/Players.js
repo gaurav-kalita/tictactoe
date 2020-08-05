@@ -4,8 +4,9 @@ import { getFormValues,  } from 'redux-form'
 import { Link } from 'react-router-dom';
 
 import './Players.css'
+import { reset } from '../../actions/BoardActions';
 
-const Players = ({ players, formValue}) =>{
+const Players = ({ players, formValue,reset}) =>{
     
     const ref = useRef();
     const ref2 = useRef();
@@ -39,8 +40,8 @@ const Players = ({ players, formValue}) =>{
             <div className="col-md-4 text-center">
             <h4 ref={ref} className="Player1 active" >{player1} </h4>
             </div>
-            <div className="col-md-4 text-center">
-            <h4 className="start "> <Link to="./">  RESTART  </Link> </h4>
+            <div className="col-md-4 text-center" onClick={()=> reset()}>
+            <h4 className="start " > <Link to="./" >  RESTART  </Link> </h4>
             </div>
             <div className="col-md-4 text-center">
             <h4 ref={ref2} className="Player2">{player2} </h4>
@@ -54,8 +55,14 @@ const mapStateToProps = state =>{
     return {
         players: state.players,
         formValue: getFormValues('InputForm')(state),
+        board : state.board,
     }
 }
 
+const mapDispatchToProps = dispatch =>({
+    reset: ()=>{
+      dispatch(reset())
+    },    
+})
 
-export default connect(mapStateToProps,) (Players);
+export default connect(mapStateToProps,mapDispatchToProps) (Players);
